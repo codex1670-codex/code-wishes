@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +46,7 @@
   }
   .container{max-width:1000px;margin:0 auto;padding:0 20px;}
   a{color:inherit;}
-
+ 
   /* ---------- floating hearts bg ---------- */
   #heartsBg{
     position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;
@@ -64,7 +65,7 @@
     90%{opacity:.4;}
     100%{transform:translateY(-110vh) translateX(20px) rotate(25deg);opacity:0;}
   }
-
+ 
   /* ---------- buttons ---------- */
   .btn{
     display:inline-flex;align-items:center;gap:8px;
@@ -85,7 +86,7 @@
   }
   .btn.small{padding:8px 18px;font-size:13px;}
   .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
-
+ 
   /* ================= BUILDER ================= */
   #builderView{position:relative;z-index:1;padding:40px 0 80px;}
   .builder-card{
@@ -135,7 +136,7 @@
   .thumb img{width:100%;height:100%;object-fit:cover;}
   .thumb .x{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;cursor:pointer;}
   .gen-row{text-align:center;margin-top:26px;}
-
+ 
   /* ================= LOVE PAGE ================= */
   #loveView{position:relative;z-index:1;display:none;}
   .top-controls{
@@ -146,7 +147,7 @@
     box-shadow:var(--shadow);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;
   }
   html.dark .icon-btn{background:#2c1e29;}
-
+ 
   .hero{
     min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
     text-align:center;padding:80px 20px 40px;position:relative;
@@ -179,11 +180,11 @@
   .counter-item .num{font-size:26px;font-weight:700;color:var(--deep-pink);font-family:'Dancing Script',cursive;}
   .counter-item .lbl{font-size:11px;text-transform:uppercase;opacity:.7;letter-spacing:1px;}
   .hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
-
+ 
   section{padding:70px 20px;position:relative;}
   .sec-title{text-align:center;font-size:42px;color:var(--deep-pink);margin-bottom:8px;}
   .sec-sub{text-align:center;opacity:.7;margin-bottom:40px;font-size:14px;}
-
+ 
   /* gallery */
   .gallery-grid{
     display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:0 auto;
@@ -201,7 +202,7 @@
   .heart-corner.left{left:8px;transform:translateY(-6px);}
   .heart-corner.right{right:8px;transform:translateY(-6px);}
   .polaroid:hover .heart-corner{opacity:1;transform:translateY(0);}
-
+ 
   /* reasons */
   .reasons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:850px;margin:0 auto;}
   @media(max-width:650px){.reasons-grid{grid-template-columns:1fr;}}
@@ -213,7 +214,7 @@
   .reason-card:hover{transform:translateY(-4px);}
   .reason-card .ic{font-size:22px;flex:none;}
   .reason-card p{margin:0;font-size:14px;line-height:1.5;}
-
+ 
   /* letters */
   .letters-box{max-width:600px;margin:0 auto;}
   .letters-box textarea{min-height:100px;resize:vertical;}
@@ -227,7 +228,7 @@
   html.dark .msg-bubble{background:#2c1e29;}
   @keyframes pop{0%{transform:scale(.7);opacity:0;}80%{transform:scale(1.05);}100%{transform:scale(1);opacity:1;}}
   .msg-time{display:block;font-size:10px;opacity:.55;margin-top:6px;}
-
+ 
   /* love actions */
   .actions-grid{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;}
   .action-btn{
@@ -241,7 +242,7 @@
   .action-btn:active{transform:scale(.9);}
   .action-label{text-align:center;font-size:12px;margin-top:8px;opacity:.75;}
   .action-col{display:flex;flex-direction:column;align-items:center;}
-
+ 
   /* dreams */
   .dreams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto;perspective:1200px;}
   @media(max-width:700px){.dreams-grid{grid-template-columns:1fr 1fr;}}
@@ -255,7 +256,7 @@
   .dream-card:hover{transform:rotateY(8deg) rotateX(6deg) translateY(-6px);box-shadow:0 22px 40px rgba(255,111,145,.35);}
   .dream-card .ic{font-size:30px;margin-bottom:10px;display:block;}
   .dream-card p{margin:0;font-size:13px;font-weight:600;}
-
+ 
   /* thank you */
   .thankyou{text-align:center;padding:90px 20px;}
   .thankyou h2{font-size:50px;color:var(--deep-pink);animation:heartbeat 1.8s ease-in-out infinite;}
@@ -265,13 +266,13 @@
     animation:spinHeart 3s linear infinite;
   }
   @keyframes spinHeart{0%{transform:rotateY(0);}100%{transform:rotateY(360deg);}}
-
+ 
   footer{
     text-align:center;padding:40px 20px 60px;font-size:13px;opacity:.8;
   }
   footer .creator{margin-top:6px;font-weight:600;color:var(--deep-pink);}
   footer .note{font-size:11px;opacity:.7;margin-top:4px;}
-
+ 
   /* link box */
   .link-box{
     max-width:560px;margin:20px auto 0;background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);
@@ -282,17 +283,17 @@
   .link-box input{background:#fff9fb;}
   .link-row{display:flex;gap:8px;margin-top:8px;}
   .link-note{font-size:11px;opacity:.7;margin-top:8px;}
-
+ 
   /* floating hearts burst */
   .burst-heart{position:fixed;pointer-events:none;font-size:26px;z-index:999;animation:burstUp 1.4s ease-out forwards;}
   @keyframes burstUp{
     0%{transform:translate(0,0) scale(.6);opacity:1;}
     100%{transform:translate(var(--dx),-260px) scale(1.3);opacity:0;}
   }
-
+ 
   .required-star{color:var(--deep-pink);}
   .field-hint{font-size:11px;opacity:.6;margin-top:2px;}
-
+ 
   /* ---------------- login ---------------- */
   #loginView{
     position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
@@ -322,9 +323,9 @@
 </style>
 </head>
 <body>
-
+ 
 <div id="heartsBg"></div>
-
+ 
 <!-- ============ LOGIN VIEW ============ -->
 <div id="loginView">
   <div class="login-card">
@@ -339,13 +340,13 @@
     <div class="login-error" id="loginError">❌ Wrong username or password. Please try again.</div>
   </div>
 </div>
-
+ 
 <!-- ============ BUILDER VIEW ============ -->
 <div id="builderView" style="display:none;">
   <div class="container">
     <h1 class="builder-title">Our Blush Story 💕</h1>
     <p class="builder-sub">Fill in your details below and generate your very own private love page ✨</p>
-
+ 
     <div class="builder-card">
       <h3 style="margin-top:0;color:var(--deep-pink)">1. Choose Your Scenario</h3>
       <div class="scenario-grid" id="scenarioGrid">
@@ -354,7 +355,7 @@
         <div class="scenario-opt" data-scenario="friends"><span class="emo">🤝</span>Best Friends</div>
       </div>
     </div>
-
+ 
     <div class="builder-card">
       <h3 style="margin-top:0;color:var(--deep-pink)">2. Your Names</h3>
       <div class="two-col">
@@ -371,7 +372,7 @@
       <input type="date" id="loveDate" />
       <p class="field-hint">We'll count the days from this date until today ❤️</p>
     </div>
-
+ 
     <div class="builder-card">
       <h3 style="margin-top:0;color:var(--deep-pink)">3. Main Couple Photo</h3>
       <div class="upload-box" onclick="document.getElementById('mainPhotoInput').click()">
@@ -380,7 +381,7 @@
       <input type="file" id="mainPhotoInput" accept="image/*" style="display:none" />
       <div class="thumbs" id="mainPhotoThumb"></div>
     </div>
-
+ 
     <div class="builder-card">
       <h3 style="margin-top:0;color:var(--deep-pink)">4. Memory Gallery (up to 9 photos)</h3>
       <div class="upload-box" onclick="document.getElementById('galleryInput').click()">
@@ -389,19 +390,19 @@
       <input type="file" id="galleryInput" accept="image/*" multiple style="display:none" />
       <div class="thumbs" id="galleryThumbs"></div>
     </div>
-
+ 
     <div class="builder-card">
       <h3 style="margin-top:0;color:var(--deep-pink)">5. Reasons You Love/Appreciate Them (up to 10)</h3>
       <div id="reasonsWrap"></div>
       <span class="add-link" id="addReason">+ Add another reason</span>
     </div>
-
+ 
     <div class="builder-card">
       <h3 style="margin-top:0;color:var(--deep-pink)">6. Future Dreams Together</h3>
       <div id="dreamsWrap"></div>
       <span class="add-link" id="addDream">+ Add another dream</span>
     </div>
-
+ 
     <div class="gen-row">
       <button class="btn" id="generateBtn">✨ Generate My Blush Story ✨</button>
       <div class="link-box" id="linkBox">
@@ -415,7 +416,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- ============ LOVE PAGE VIEW ============ -->
 <div id="loveView">
   <div class="top-controls">
@@ -423,7 +424,7 @@
     <button class="icon-btn" id="editBtn" title="Edit / create another">✏️</button>
     <button class="icon-btn" id="logoutBtn" title="Logout">🚪</button>
   </div>
-
+ 
   <section class="hero" id="heroSection">
     <div class="hero-badge" id="scenarioBadge">Love Proposal</div>
     <h1>Our Blush Story 💕</h1>
@@ -437,19 +438,19 @@
       <button class="btn ghost" id="sendKissHero">Send a Kiss 💋</button>
     </div>
   </section>
-
+ 
   <section id="gallerySection">
     <h2 class="sec-title">Our Beautiful Memories ✨</h2>
     <p class="sec-sub">Hover over a photo for a little surprise</p>
     <div class="gallery-grid" id="galleryDisplay"></div>
   </section>
-
+ 
   <section>
     <h2 class="sec-title">Reasons I Love You</h2>
     <p class="sec-sub">Just a few of so many ❤️</p>
     <div class="reasons-grid" id="reasonsDisplay"></div>
   </section>
-
+ 
   <section>
     <h2 class="sec-title">Our Love Letters 💌</h2>
     <div class="letters-box">
@@ -458,7 +459,7 @@
       <div id="messagesList"></div>
     </div>
   </section>
-
+ 
   <section>
     <h2 class="sec-title">Show Some Love</h2>
     <p class="sec-sub">Tap a button and feel the love</p>
@@ -469,35 +470,35 @@
       <div class="action-col"><button class="action-btn" data-anim="explosion">💖</button><span class="action-label">Heart Explosion</span></div>
     </div>
   </section>
-
+ 
   <section>
     <h2 class="sec-title">Our Future Together</h2>
     <div class="dreams-grid" id="dreamsDisplay"></div>
   </section>
-
+ 
   <section class="thankyou">
     <h2>Thank You for Watching 🎀</h2>
     <div class="tglow">💗</div>
     <p style="opacity:.75;font-size:14px;">Made with all our love, for the two of us.</p>
   </section>
-
+ 
   <footer>
     <div>Made with lots of love ❤️</div>
     <div class="creator">code-x</div>
     <div class="note">Custom websites available — reach out to build your own Blush Story</div>
   </footer>
 </div>
-
+ 
 <script>
 /* ---------------- login ---------------- */
 const VALID_USER = 'code-x';
 const VALID_PASS = 'sanjiv';
-
+ 
 function attemptLogin(){
   const user = document.getElementById('loginUser').value.trim();
   const pass = document.getElementById('loginPass').value;
   const errBox = document.getElementById('loginError');
-
+ 
   if(user === VALID_USER && pass === VALID_PASS){
     errBox.classList.remove('show');
     sessionStorage.setItem('blush_logged_in', '1');
@@ -508,40 +509,20 @@ function attemptLogin(){
     document.getElementById('loginPass').value = '';
   }
 }
-
+ 
 document.getElementById('loginBtn').addEventListener('click', attemptLogin);
 document.getElementById('loginPass').addEventListener('keydown', e=>{ if(e.key==='Enter') attemptLogin(); });
 document.getElementById('loginUser').addEventListener('keydown', e=>{ if(e.key==='Enter') attemptLogin(); });
-
+ 
 /* After a manual login, show the builder so a new story can be created. */
 function afterLogin(){
   document.getElementById('builderView').style.display = 'block';
 }
-
-/* If the URL is a private love-page link, open it straight away — no login
-   needed, since the link itself is the private/shareable credential. */
-let openedDirectLink = false;
-(function(){
-  const match = location.hash.match(/love=([a-z0-9]+)/i);
-  if(match){
-    const raw = localStorage.getItem('blush_'+match[1]);
-    if(raw){
-      try{
-        const data = JSON.parse(raw);
-        document.getElementById('loginView').style.display = 'none';
-        renderLovePage(data, match[1]);
-        openedDirectLink = true;
-      }catch(e){}
-    }
-  }
-})();
-
-/* If already logged in this session, skip straight past the login screen */
-if(!openedDirectLink && sessionStorage.getItem('blush_logged_in') === '1'){
-  document.getElementById('loginView').style.display = 'none';
-  afterLogin();
-}
-
+ 
+/* Bootstrapping (checking for a private link / existing session) happens at
+   the very bottom of this script, after every function and constant above
+   it — including scenarioThemes and renderLovePage — has been defined. */
+ 
 /* ---------------- background floating hearts ---------------- */
 (function(){
   const wrap = document.getElementById('heartsBg');
@@ -557,7 +538,7 @@ if(!openedDirectLink && sessionStorage.getItem('blush_logged_in') === '1'){
     wrap.appendChild(h);
   }
 })();
-
+ 
 /* ---------------- dark mode ---------------- */
 function setDark(on){
   document.documentElement.classList.toggle('dark', on);
@@ -567,7 +548,7 @@ function setDark(on){
 }
 setDark(localStorage.getItem('blush_dark')==='1');
 document.getElementById('darkToggle').addEventListener('click', ()=> setDark(!document.documentElement.classList.contains('dark')));
-
+ 
 /* ---------------- scenario select ---------------- */
 let currentScenario = 'proposal';
 document.querySelectorAll('.scenario-opt').forEach(opt=>{
@@ -582,11 +563,11 @@ const scenarioThemes = {
   birthday: {label:'Birthday Wishes 🎂', title:'Our Birthday Love Story 🎂', accent:'#ff8fab', accent2:'#ffd27a', icon:'🎂'},
   friends:  {label:'Best Friends 🤝', title:'Our Friendship Story 🤝', accent:'#ff8fc1', accent2:'#c9a6ff', icon:'🤝'}
 };
-
+ 
 /* ---------------- image uploads ---------------- */
 let mainPhotoData = null;
 let galleryData = [];
-
+ 
 document.getElementById('mainPhotoInput').addEventListener('change', e=>{
   const file = e.target.files[0];
   if(!file) return;
@@ -598,7 +579,7 @@ document.getElementById('mainPhotoInput').addEventListener('change', e=>{
   };
   reader.readAsDataURL(file);
 });
-
+ 
 document.getElementById('galleryInput').addEventListener('change', e=>{
   const files = Array.from(e.target.files).slice(0, 9 - galleryData.length);
   files.forEach(file=>{
@@ -615,7 +596,7 @@ function renderGalleryThumbs(){
   wrap.innerHTML = galleryData.map((src,i)=>`<div class="thumb"><img src="${src}"/><button class="x" onclick="removeGalleryImg(${i})">×</button></div>`).join('');
 }
 function removeGalleryImg(i){ galleryData.splice(i,1); renderGalleryThumbs(); }
-
+ 
 /* ---------------- dynamic reasons ---------------- */
 const reasonIcons = ['❤️','🌸','⭐','🌹','✨','😊','🥰','🍀','🎀','💫'];
 function addReasonRow(value=''){
@@ -629,7 +610,7 @@ function addReasonRow(value=''){
 }
 document.getElementById('addReason').addEventListener('click', ()=>addReasonRow());
 addReasonRow(); addReasonRow(); addReasonRow();
-
+ 
 /* ---------------- dynamic dreams ---------------- */
 const dreamIcons = ['✈️','💍','🐾','🏡','👶','🌅','🎓','💰','🚗','🌍'];
 function addDreamRow(value=''){
@@ -645,10 +626,10 @@ document.getElementById('addDream').addEventListener('click', ()=>addDreamRow())
 addDreamRow('Travel the world together');
 addDreamRow('Grow old together');
 addDreamRow('Adopt a puppy');
-
+ 
 /* ---------------- generate ---------------- */
 function genId(){ return 'x' + Math.random().toString(36).slice(2,10) + Date.now().toString(36); }
-
+ 
 document.getElementById('generateBtn').addEventListener('click', ()=>{
   const boy = document.getElementById('boyName').value.trim();
   const girl = document.getElementById('girlName').value.trim();
@@ -667,7 +648,7 @@ document.getElementById('generateBtn').addEventListener('click', ()=>{
     const txt = row.querySelector('input').value.trim();
     return txt ? {icon:sel,text:txt} : null;
   }).filter(Boolean);
-
+ 
   const data = {
     scenario: currentScenario,
     boy, girl, date,
@@ -676,7 +657,7 @@ document.getElementById('generateBtn').addEventListener('click', ()=>{
     reasons, dreams,
     messages: []
   };
-
+ 
   const id = genId();
   try{
     localStorage.setItem('blush_'+id, JSON.stringify(data));
@@ -688,10 +669,10 @@ document.getElementById('generateBtn').addEventListener('click', ()=>{
   const link = document.getElementById('privateLink');
   link.value = location.href;
   document.getElementById('linkBox').classList.add('show');
-
+ 
   renderLovePage(data, id);
 });
-
+ 
 document.getElementById('copyLinkBtn').addEventListener('click', ()=>{
   const link = document.getElementById('privateLink');
   link.select();
@@ -700,13 +681,13 @@ document.getElementById('copyLinkBtn').addEventListener('click', ()=>{
   const old = btn.textContent; btn.textContent='Copied!';
   setTimeout(()=>btn.textContent=old,1500);
 });
-
+ 
 document.getElementById('editBtn').addEventListener('click', ()=>{
   document.getElementById('loveView').style.display='none';
   document.getElementById('builderView').style.display='block';
   history.pushState('', document.title, location.pathname + location.search);
 });
-
+ 
 document.getElementById('logoutBtn').addEventListener('click', ()=>{
   sessionStorage.removeItem('blush_logged_in');
   document.getElementById('loveView').style.display='none';
@@ -716,28 +697,28 @@ document.getElementById('logoutBtn').addEventListener('click', ()=>{
   document.getElementById('loginView').style.display='flex';
   history.pushState('', document.title, location.pathname + location.search);
 });
-
+ 
 /* ---------------- render love page ---------------- */
 let activeData = null;
 let activeId = null;
-
+ 
 function renderLovePage(data, id){
   activeData = data; activeId = id;
   document.getElementById('builderView').style.display='none';
   const view = document.getElementById('loveView');
   view.style.display='block';
   window.scrollTo(0,0);
-
+ 
   const theme = scenarioThemes[data.scenario] || scenarioThemes.proposal;
   document.documentElement.style.setProperty('--deep-pink', theme.accent);
   document.documentElement.style.setProperty('--gold', theme.accent2);
   document.getElementById('scenarioBadge').textContent = theme.label;
   view.querySelector('.hero h1').textContent = theme.title;
   document.getElementById('heroSubtitle').textContent = `${data.boy} & ${data.girl}'s Love World`;
-
+ 
   const mainDisplay = document.getElementById('mainPhotoDisplay');
   mainDisplay.innerHTML = data.mainPhoto ? `<img src="${data.mainPhoto}"/>` : theme.icon;
-
+ 
   // gallery
   const gWrap = document.getElementById('galleryDisplay');
   if(data.gallery && data.gallery.length){
@@ -750,37 +731,37 @@ function renderLovePage(data, id){
   } else {
     gWrap.innerHTML = `<p style="grid-column:1/-1;text-align:center;opacity:.6">No photos uploaded yet 📸</p>`;
   }
-
+ 
   // reasons
   const rWrap = document.getElementById('reasonsDisplay');
   rWrap.innerHTML = (data.reasons && data.reasons.length) ? data.reasons.map(r=>`
     <div class="reason-card"><span class="ic">${r.icon}</span><p>${escapeHtml(r.text)}</p></div>
   `).join('') : `<p style="grid-column:1/-1;text-align:center;opacity:.6">No reasons added yet</p>`;
-
+ 
   // dreams
   const dWrap = document.getElementById('dreamsDisplay');
   dWrap.innerHTML = (data.dreams && data.dreams.length) ? data.dreams.map(d=>`
     <div class="dream-card"><span class="ic">${d.icon}</span><p>${escapeHtml(d.text)}</p></div>
   `).join('') : `<p style="grid-column:1/-1;text-align:center;opacity:.6">No dreams added yet</p>`;
-
+ 
   // messages
   renderMessages();
-
+ 
   // counter
   startCounter(data.date);
 }
-
+ 
 function escapeHtml(str){
   const d = document.createElement('div'); d.textContent = str; return d.innerHTML;
 }
-
+ 
 function renderMessages(){
   const list = document.getElementById('messagesList');
   list.innerHTML = (activeData.messages||[]).map(m=>`
     <div class="msg-bubble">${escapeHtml(m.text)}<span class="msg-time">${m.time}</span></div>
   `).join('');
 }
-
+ 
 document.getElementById('sendMsgBtn').addEventListener('click', ()=>{
   const input = document.getElementById('msgInput');
   const text = input.value.trim();
@@ -790,7 +771,7 @@ document.getElementById('sendMsgBtn').addEventListener('click', ()=>{
   input.value='';
   renderMessages();
 });
-
+ 
 /* ---------------- love days counter ---------------- */
 let counterTimer = null;
 function startCounter(dateStr){
@@ -815,7 +796,7 @@ function startCounter(dateStr){
   update();
   counterTimer = setInterval(update, 1000);
 }
-
+ 
 /* ---------------- kiss / heart burst ---------------- */
 function burstHearts(x, y, glyph, count){
   for(let i=0;i<count;i++){
@@ -830,12 +811,12 @@ function burstHearts(x, y, glyph, count){
     setTimeout(()=>h.remove(), 1600);
   }
 }
-
+ 
 document.getElementById('sendKissHero').addEventListener('click', (e)=>{
   const r = e.target.getBoundingClientRect();
   burstHearts(r.left+r.width/2, r.top, '💋', 14);
 });
-
+ 
 document.querySelectorAll('.action-btn').forEach(btn=>{
   btn.addEventListener('click', (e)=>{
     const r = e.target.getBoundingClientRect();
@@ -845,10 +826,39 @@ document.querySelectorAll('.action-btn').forEach(btn=>{
     burstHearts(r.left+r.width/2, r.top, map[type], count);
   });
 });
-
+ 
 /* Note: private links (URLs containing #love=...) are opened directly near
    the top of this script, before the login gate, so sharing the link is
    enough to view a page — no login required for that. */
+ 
+/* ---------------- bootstrap on page load ---------------- */
+/* Runs last, once every function/const above (scenarioThemes,
+   renderLovePage, etc.) is fully defined — this avoids the private link
+   silently failing to open due to referencing something not set up yet. */
+(function bootstrap(){
+  const match = location.hash.match(/love=([a-z0-9]+)/i);
+ 
+  // 1) Private link present -> open it directly, no login required.
+  if(match){
+    const raw = localStorage.getItem('blush_'+match[1]);
+    if(raw){
+      try{
+        const data = JSON.parse(raw);
+        document.getElementById('loginView').style.display = 'none';
+        renderLovePage(data, match[1]);
+        return;
+      }catch(e){
+        console.error('Could not open private link:', e);
+      }
+    }
+  }
+ 
+  // 2) No valid private link -> require login (unless already logged in this session).
+  if(sessionStorage.getItem('blush_logged_in') === '1'){
+    document.getElementById('loginView').style.display = 'none';
+    afterLogin();
+  }
+})();
 </script>
 </body>
 </html>
