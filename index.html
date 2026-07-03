@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -514,27 +513,31 @@ document.getElementById('loginBtn').addEventListener('click', attemptLogin);
 document.getElementById('loginPass').addEventListener('keydown', e=>{ if(e.key==='Enter') attemptLogin(); });
 document.getElementById('loginUser').addEventListener('keydown', e=>{ if(e.key==='Enter') attemptLogin(); });
 
-/* After a successful login: either resume a saved love page (if the URL hash
-   points to one) or show the builder form so a new story can be created. */
+/* After a manual login, show the builder so a new story can be created. */
 function afterLogin(){
-  const hash = location.hash;
-  const match = hash.match(/love=([a-z0-9]+)/i);
-  if(match){
-    const id = match[1];
-    const raw = localStorage.getItem('blush_'+id);
-    if(raw){
-      try{
-        const data = JSON.parse(raw);
-        renderLovePage(data, id);
-        return;
-      }catch(e){}
-    }
-  }
   document.getElementById('builderView').style.display = 'block';
 }
 
+/* If the URL is a private love-page link, open it straight away — no login
+   needed, since the link itself is the private/shareable credential. */
+let openedDirectLink = false;
+(function(){
+  const match = location.hash.match(/love=([a-z0-9]+)/i);
+  if(match){
+    const raw = localStorage.getItem('blush_'+match[1]);
+    if(raw){
+      try{
+        const data = JSON.parse(raw);
+        document.getElementById('loginView').style.display = 'none';
+        renderLovePage(data, match[1]);
+        openedDirectLink = true;
+      }catch(e){}
+    }
+  }
+})();
+
 /* If already logged in this session, skip straight past the login screen */
-if(sessionStorage.getItem('blush_logged_in') === '1'){
+if(!openedDirectLink && sessionStorage.getItem('blush_logged_in') === '1'){
   document.getElementById('loginView').style.display = 'none';
   afterLogin();
 }
@@ -843,9 +846,9 @@ document.querySelectorAll('.action-btn').forEach(btn=>{
   });
 });
 
-/* Note: loading a saved page from the URL hash now happens inside
-   afterLogin(), once the username/password have been verified, so a
-   private link still requires logging in first. */
+/* Note: private links (URLs containing #love=...) are opened directly near
+   the top of this script, before the login gate, so sharing the link is
+   enough to view a page — no login required for that. */
 </script>
 </body>
 </html>
