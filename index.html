@@ -1,1 +1,851 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Blush Story 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#ffc1cc;
+    --baby-pink:#ff9eb6;
+    --deep-pink:#ff6f91;
+    --gold:#e8c27a;
+    --cream:#fff7f2;
+    --white:#ffffff;
+    --text:#5b3a44;
+    --accent: var(--baby-pink);
+    --accent-2: var(--gold);
+    --shadow: 0 10px 30px rgba(255,111,145,0.25);
+    --radius: 22px;
+  }
+  html.dark{
+    --pink:#3a2230;
+    --baby-pink:#4d2a3a;
+    --deep-pink:#ff7fa3;
+    --gold:#f0d8a0;
+    --cream:#1c1420;
+    --white:#241823;
+    --text:#f5e3ea;
+    --shadow: 0 10px 30px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    color:var(--text);
+    background:linear-gradient(180deg,var(--pink) 0%,var(--cream) 40%,var(--white) 100%);
+    overflow-x:hidden;
+    scroll-behavior:smooth;
+    transition:background .5s ease,color .5s ease;
+  }
+  h1,h2,h3,.script{
+    font-family:'Dancing Script',cursive;
+  }
+  .container{max-width:1000px;margin:0 auto;padding:0 20px;}
+  a{color:inherit;}
+
+  /* ---------- floating hearts bg ---------- */
+  #heartsBg{
+    position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0;
+  }
+  .bg-heart{
+    position:absolute;bottom:-50px;
+    color:var(--deep-pink);
+    opacity:.35;
+    font-size:22px;
+    animation:floatUp linear infinite;
+    user-select:none;
+  }
+  @keyframes floatUp{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0;}
+    10%{opacity:.5;}
+    90%{opacity:.4;}
+    100%{transform:translateY(-110vh) translateX(20px) rotate(25deg);opacity:0;}
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    border:none;cursor:pointer;
+    padding:14px 30px;
+    border-radius:999px;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    background:linear-gradient(135deg,var(--deep-pink),var(--baby-pink));
+    color:#fff;
+    box-shadow:var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+  }
+  .btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 14px 34px rgba(255,111,145,0.45);filter:brightness(1.05);}
+  .btn.ghost{
+    background:#fff;color:var(--deep-pink);border:2px solid var(--baby-pink);
+  }
+  .btn.small{padding:8px 18px;font-size:13px;}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+
+  /* ================= BUILDER ================= */
+  #builderView{position:relative;z-index:1;padding:40px 0 80px;}
+  .builder-card{
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,158,182,0.4);
+    border-radius:var(--radius);
+    padding:28px;
+    margin-bottom:22px;
+    box-shadow:var(--shadow);
+  }
+  html.dark .builder-card{background:rgba(36,24,35,0.75);}
+  .builder-title{text-align:center;font-size:42px;margin:10px 0 0;color:var(--deep-pink);}
+  .builder-sub{text-align:center;color:var(--text);opacity:.75;margin-bottom:30px;font-size:14px;}
+  label{display:block;font-weight:600;font-size:13px;margin:14px 0 6px;color:var(--text);}
+  input[type=text],input[type=date],textarea,select{
+    width:100%;padding:12px 16px;border-radius:14px;border:2px solid #ffd7e0;
+    font-family:'Poppins',sans-serif;font-size:14px;background:#fff;color:#333;
+    outline:none;transition:border .2s ease;
+  }
+  html.dark input[type=text],html.dark input[type=date],html.dark textarea,html.dark select{
+    background:#2c1e29;color:#f5e3ea;border-color:#5a3648;
+  }
+  input:focus,textarea:focus,select:focus{border-color:var(--deep-pink);}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.two-col{grid-template-columns:1fr;}}
+  .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;}
+  @media(max-width:600px){.scenario-grid{grid-template-columns:1fr;}}
+  .scenario-opt{
+    border:2px solid #ffd7e0;border-radius:16px;padding:14px 10px;text-align:center;cursor:pointer;
+    font-size:13px;font-weight:600;transition:all .2s ease;background:#fff;
+  }
+  html.dark .scenario-opt{background:#2c1e29;}
+  .scenario-opt.active{border-color:var(--deep-pink);background:linear-gradient(135deg,#ffe3ea,#fff);box-shadow:var(--shadow);}
+  .scenario-opt .emo{font-size:26px;display:block;margin-bottom:6px;}
+  .dyn-row{display:flex;gap:8px;margin-bottom:8px;align-items:center;}
+  .dyn-row input{flex:1;}
+  .dyn-row select{width:90px;flex:none;}
+  .rm-btn{background:#ffe3ea;border:none;border-radius:10px;width:34px;height:34px;cursor:pointer;color:var(--deep-pink);font-weight:700;flex:none;}
+  .add-link{color:var(--deep-pink);font-weight:600;font-size:13px;cursor:pointer;display:inline-block;margin-top:4px;}
+  .upload-box{
+    border:2px dashed var(--baby-pink);border-radius:16px;padding:22px;text-align:center;cursor:pointer;
+    background:rgba(255,193,204,0.12);
+  }
+  .thumbs{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;}
+  .thumb{position:relative;width:70px;height:70px;border-radius:10px;overflow:hidden;box-shadow:0 4px 10px rgba(0,0,0,.15);}
+  .thumb img{width:100%;height:100%;object-fit:cover;}
+  .thumb .x{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:18px;height:18px;font-size:11px;cursor:pointer;}
+  .gen-row{text-align:center;margin-top:26px;}
+
+  /* ================= LOVE PAGE ================= */
+  #loveView{position:relative;z-index:1;display:none;}
+  .top-controls{
+    position:fixed;top:14px;right:14px;z-index:50;display:flex;gap:8px;
+  }
+  .icon-btn{
+    width:42px;height:42px;border-radius:50%;border:none;background:#fff;
+    box-shadow:var(--shadow);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;
+  }
+  html.dark .icon-btn{background:#2c1e29;}
+
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:80px 20px 40px;position:relative;
+  }
+  .hero-badge{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--deep-pink);opacity:.8;margin-bottom:6px;}
+  .hero h1{font-size:64px;color:var(--deep-pink);margin:0;text-shadow:0 4px 20px rgba(255,111,145,.35);}
+  .hero .subtitle{font-size:20px;margin:8px 0 26px;color:var(--text);opacity:.85;}
+  .photo-frame{
+    width:220px;height:220px;border-radius:50%;
+    padding:8px;
+    background:linear-gradient(135deg,var(--gold),var(--deep-pink),var(--baby-pink));
+    box-shadow:0 20px 45px rgba(255,111,145,.4);
+    margin-bottom:24px;
+    perspective:800px;
+  }
+  .photo-frame .inner{
+    width:100%;height:100%;border-radius:50%;overflow:hidden;background:#fff url('') center/cover;
+    display:flex;align-items:center;justify-content:center;font-size:60px;
+    transition:transform .5s ease;
+    transform-style:preserve-3d;
+  }
+  .photo-frame:hover .inner{transform:rotateY(12deg) rotateX(6deg) scale(1.04);}
+  .photo-frame img{width:100%;height:100%;object-fit:cover;}
+  .counter-box{
+    background:#fff;border-radius:20px;padding:18px 26px;box-shadow:var(--shadow);margin-bottom:30px;
+    display:flex;gap:18px;flex-wrap:wrap;justify-content:center;
+  }
+  html.dark .counter-box{background:#2c1e29;}
+  .counter-item{text-align:center;min-width:60px;}
+  .counter-item .num{font-size:26px;font-weight:700;color:var(--deep-pink);font-family:'Dancing Script',cursive;}
+  .counter-item .lbl{font-size:11px;text-transform:uppercase;opacity:.7;letter-spacing:1px;}
+  .hero-buttons{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+
+  section{padding:70px 20px;position:relative;}
+  .sec-title{text-align:center;font-size:42px;color:var(--deep-pink);margin-bottom:8px;}
+  .sec-sub{text-align:center;opacity:.7;margin-bottom:40px;font-size:14px;}
+
+  /* gallery */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:900px;margin:0 auto;
+  }
+  @media(max-width:700px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  .polaroid{
+    background:#fff;padding:12px 12px 30px;border-radius:6px;box-shadow:0 12px 24px rgba(0,0,0,.18);
+    transform:rotate(var(--r,-2deg));transition:transform .3s ease, box-shadow .3s ease;position:relative;
+  }
+  html.dark .polaroid{background:#2c1e29;}
+  .polaroid:hover{transform:rotate(0deg) scale(1.06) translateY(-6px);box-shadow:0 20px 36px rgba(255,111,145,.35);z-index:2;}
+  .polaroid .ph{width:100%;aspect-ratio:1/1;border-radius:3px;overflow:hidden;background:linear-gradient(135deg,#ffe3ea,#fff);display:flex;align-items:center;justify-content:center;font-size:30px;}
+  .polaroid img{width:100%;height:100%;object-fit:cover;}
+  .heart-corner{position:absolute;top:6px;font-size:16px;color:var(--deep-pink);opacity:0;transition:opacity .3s ease, transform .3s ease;}
+  .heart-corner.left{left:8px;transform:translateY(-6px);}
+  .heart-corner.right{right:8px;transform:translateY(-6px);}
+  .polaroid:hover .heart-corner{opacity:1;transform:translateY(0);}
+
+  /* reasons */
+  .reasons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:850px;margin:0 auto;}
+  @media(max-width:650px){.reasons-grid{grid-template-columns:1fr;}}
+  .reason-card{
+    background:#fff;border-radius:16px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;
+    box-shadow:0 8px 20px rgba(255,111,145,.15);border:1px solid #ffe3ea;transition:transform .25s ease;
+  }
+  html.dark .reason-card{background:#2c1e29;border-color:#5a3648;}
+  .reason-card:hover{transform:translateY(-4px);}
+  .reason-card .ic{font-size:22px;flex:none;}
+  .reason-card p{margin:0;font-size:14px;line-height:1.5;}
+
+  /* letters */
+  .letters-box{max-width:600px;margin:0 auto;}
+  .letters-box textarea{min-height:100px;resize:vertical;}
+  .send-row{text-align:right;margin-top:10px;}
+  #messagesList{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+  .msg-bubble{
+    background:#fff;border-radius:18px 18px 18px 4px;padding:14px 18px;box-shadow:0 8px 18px rgba(255,111,145,.18);
+    font-size:14px;align-self:flex-start;max-width:80%;
+    animation:pop .35s ease;
+  }
+  html.dark .msg-bubble{background:#2c1e29;}
+  @keyframes pop{0%{transform:scale(.7);opacity:0;}80%{transform:scale(1.05);}100%{transform:scale(1);opacity:1;}}
+  .msg-time{display:block;font-size:10px;opacity:.55;margin-top:6px;}
+
+  /* love actions */
+  .actions-grid{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;}
+  .action-btn{
+    width:110px;height:110px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#fff,#ffe3ea);
+    box-shadow:var(--shadow);font-size:34px;display:flex;align-items:center;justify-content:center;
+    transition:transform .2s ease;
+  }
+  html.dark .action-btn{background:linear-gradient(135deg,#2c1e29,#3a2230);}
+  .action-btn:hover{transform:scale(1.1) rotate(-4deg);}
+  .action-btn:active{transform:scale(.9);}
+  .action-label{text-align:center;font-size:12px;margin-top:8px;opacity:.75;}
+  .action-col{display:flex;flex-direction:column;align-items:center;}
+
+  /* dreams */
+  .dreams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto;perspective:1200px;}
+  @media(max-width:700px){.dreams-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.dreams-grid{grid-template-columns:1fr;}}
+  .dream-card{
+    background:linear-gradient(160deg,#fff,#ffe9ee);
+    border-radius:18px;padding:26px 16px;text-align:center;box-shadow:0 14px 30px rgba(255,111,145,.22);
+    transform-style:preserve-3d;transition:transform .3s ease, box-shadow .3s ease;cursor:default;
+  }
+  html.dark .dream-card{background:linear-gradient(160deg,#2c1e29,#3a2230);}
+  .dream-card:hover{transform:rotateY(8deg) rotateX(6deg) translateY(-6px);box-shadow:0 22px 40px rgba(255,111,145,.35);}
+  .dream-card .ic{font-size:30px;margin-bottom:10px;display:block;}
+  .dream-card p{margin:0;font-size:13px;font-weight:600;}
+
+  /* thank you */
+  .thankyou{text-align:center;padding:90px 20px;}
+  .thankyou h2{font-size:50px;color:var(--deep-pink);animation:heartbeat 1.8s ease-in-out infinite;}
+  @keyframes heartbeat{0%,100%{transform:scale(1);}15%{transform:scale(1.12);}30%{transform:scale(1);}45%{transform:scale(1.08);}60%{transform:scale(1);}}
+  .thankyou .tglow{
+    display:inline-block;font-size:40px;margin-top:10px;
+    animation:spinHeart 3s linear infinite;
+  }
+  @keyframes spinHeart{0%{transform:rotateY(0);}100%{transform:rotateY(360deg);}}
+
+  footer{
+    text-align:center;padding:40px 20px 60px;font-size:13px;opacity:.8;
+  }
+  footer .creator{margin-top:6px;font-weight:600;color:var(--deep-pink);}
+  footer .note{font-size:11px;opacity:.7;margin-top:4px;}
+
+  /* link box */
+  .link-box{
+    max-width:560px;margin:20px auto 0;background:#fff;border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);
+    display:none;
+  }
+  html.dark .link-box{background:#2c1e29;}
+  .link-box.show{display:block;}
+  .link-box input{background:#fff9fb;}
+  .link-row{display:flex;gap:8px;margin-top:8px;}
+  .link-note{font-size:11px;opacity:.7;margin-top:8px;}
+
+  /* floating hearts burst */
+  .burst-heart{position:fixed;pointer-events:none;font-size:26px;z-index:999;animation:burstUp 1.4s ease-out forwards;}
+  @keyframes burstUp{
+    0%{transform:translate(0,0) scale(.6);opacity:1;}
+    100%{transform:translate(var(--dx),-260px) scale(1.3);opacity:0;}
+  }
+
+  .required-star{color:var(--deep-pink);}
+  .field-hint{font-size:11px;opacity:.6;margin-top:2px;}
+
+  /* ---------------- login ---------------- */
+  #loginView{
+    position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  .login-card{
+    width:100%;max-width:380px;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,158,182,0.4);
+    border-radius:var(--radius);
+    padding:34px 30px;
+    box-shadow:var(--shadow);
+    text-align:center;
+  }
+  html.dark .login-card{background:rgba(36,24,35,0.85);}
+  .login-heart{font-size:40px;margin-bottom:6px;}
+  .login-card h1{font-size:38px;color:var(--deep-pink);margin:0 0 4px;}
+  .login-card p.login-sub{font-size:13px;opacity:.75;margin:0 0 22px;}
+  .login-card label{text-align:left;}
+  .login-error{
+    display:none;background:#ffe1e6;color:#c23b5a;border:1px solid #ffb3c1;
+    border-radius:12px;padding:10px 14px;font-size:13px;margin-top:14px;font-weight:600;
+  }
+  html.dark .login-error{background:#4a2230;color:#ff9eb6;border-color:#6b3346;}
+  .login-error.show{display:block;animation:pop .3s ease;}
+  .login-card .btn{width:100%;justify-content:center;margin-top:20px;}
+</style>
+</head>
+<body>
+
+<div id="heartsBg"></div>
+
+<!-- ============ LOGIN VIEW ============ -->
+<div id="loginView">
+  <div class="login-card">
+    <div class="login-heart">💗</div>
+    <h1>Welcome Back</h1>
+    <p class="login-sub">Login to create your Blush Story</p>
+    <label>Username</label>
+    <input type="text" id="loginUser" placeholder="Enter username" autocomplete="off" />
+    <label>Password</label>
+    <input type="password" id="loginPass" placeholder="Enter password" autocomplete="off" />
+    <button class="btn" id="loginBtn">Login 💕</button>
+    <div class="login-error" id="loginError">❌ Wrong username or password. Please try again.</div>
+  </div>
+</div>
+
+<!-- ============ BUILDER VIEW ============ -->
+<div id="builderView" style="display:none;">
+  <div class="container">
+    <h1 class="builder-title">Our Blush Story 💕</h1>
+    <p class="builder-sub">Fill in your details below and generate your very own private love page ✨</p>
+
+    <div class="builder-card">
+      <h3 style="margin-top:0;color:var(--deep-pink)">1. Choose Your Scenario</h3>
+      <div class="scenario-grid" id="scenarioGrid">
+        <div class="scenario-opt active" data-scenario="proposal"><span class="emo">💍</span>Love Proposal</div>
+        <div class="scenario-opt" data-scenario="birthday"><span class="emo">🎂</span>Birthday Wishes</div>
+        <div class="scenario-opt" data-scenario="friends"><span class="emo">🤝</span>Best Friends</div>
+      </div>
+    </div>
+
+    <div class="builder-card">
+      <h3 style="margin-top:0;color:var(--deep-pink)">2. Your Names</h3>
+      <div class="two-col">
+        <div>
+          <label>Name One <span class="required-star">*</span></label>
+          <input type="text" id="boyName" placeholder="e.g. Arjun" />
+        </div>
+        <div>
+          <label>Name Two <span class="required-star">*</span></label>
+          <input type="text" id="girlName" placeholder="e.g. Priya" />
+        </div>
+      </div>
+      <label>Special Date (proposal / friendship / birthday) <span class="required-star">*</span></label>
+      <input type="date" id="loveDate" />
+      <p class="field-hint">We'll count the days from this date until today ❤️</p>
+    </div>
+
+    <div class="builder-card">
+      <h3 style="margin-top:0;color:var(--deep-pink)">3. Main Couple Photo</h3>
+      <div class="upload-box" onclick="document.getElementById('mainPhotoInput').click()">
+        📷 Click to upload your main photo
+      </div>
+      <input type="file" id="mainPhotoInput" accept="image/*" style="display:none" />
+      <div class="thumbs" id="mainPhotoThumb"></div>
+    </div>
+
+    <div class="builder-card">
+      <h3 style="margin-top:0;color:var(--deep-pink)">4. Memory Gallery (up to 9 photos)</h3>
+      <div class="upload-box" onclick="document.getElementById('galleryInput').click()">
+        🖼️ Click to upload gallery photos
+      </div>
+      <input type="file" id="galleryInput" accept="image/*" multiple style="display:none" />
+      <div class="thumbs" id="galleryThumbs"></div>
+    </div>
+
+    <div class="builder-card">
+      <h3 style="margin-top:0;color:var(--deep-pink)">5. Reasons You Love/Appreciate Them (up to 10)</h3>
+      <div id="reasonsWrap"></div>
+      <span class="add-link" id="addReason">+ Add another reason</span>
+    </div>
+
+    <div class="builder-card">
+      <h3 style="margin-top:0;color:var(--deep-pink)">6. Future Dreams Together</h3>
+      <div id="dreamsWrap"></div>
+      <span class="add-link" id="addDream">+ Add another dream</span>
+    </div>
+
+    <div class="gen-row">
+      <button class="btn" id="generateBtn">✨ Generate My Blush Story ✨</button>
+      <div class="link-box" id="linkBox">
+        <strong>💖 Your private page is ready!</strong>
+        <div class="link-row">
+          <input type="text" id="privateLink" readonly />
+          <button class="btn small" id="copyLinkBtn">Copy</button>
+        </div>
+        <p class="link-note">This link is stored in this browser only (no server/backend), so it will open correctly on this device/browser. Open it any time to revisit your page.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ LOVE PAGE VIEW ============ -->
+<div id="loveView">
+  <div class="top-controls">
+    <button class="icon-btn" id="darkToggle" title="Toggle dark mode">🌙</button>
+    <button class="icon-btn" id="editBtn" title="Edit / create another">✏️</button>
+    <button class="icon-btn" id="logoutBtn" title="Logout">🚪</button>
+  </div>
+
+  <section class="hero" id="heroSection">
+    <div class="hero-badge" id="scenarioBadge">Love Proposal</div>
+    <h1>Our Blush Story 💕</h1>
+    <p class="subtitle" id="heroSubtitle">Names &amp; Love World</p>
+    <div class="photo-frame">
+      <div class="inner" id="mainPhotoDisplay">💑</div>
+    </div>
+    <div class="counter-box" id="counterBox"></div>
+    <div class="hero-buttons">
+      <button class="btn" onclick="document.getElementById('gallerySection').scrollIntoView({behavior:'smooth'})">Explore Our Love</button>
+      <button class="btn ghost" id="sendKissHero">Send a Kiss 💋</button>
+    </div>
+  </section>
+
+  <section id="gallerySection">
+    <h2 class="sec-title">Our Beautiful Memories ✨</h2>
+    <p class="sec-sub">Hover over a photo for a little surprise</p>
+    <div class="gallery-grid" id="galleryDisplay"></div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Reasons I Love You</h2>
+    <p class="sec-sub">Just a few of so many ❤️</p>
+    <div class="reasons-grid" id="reasonsDisplay"></div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Our Love Letters 💌</h2>
+    <div class="letters-box">
+      <textarea id="msgInput" placeholder="Write something sweet..."></textarea>
+      <div class="send-row"><button class="btn small" id="sendMsgBtn">Send with Love 💌</button></div>
+      <div id="messagesList"></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Show Some Love</h2>
+    <p class="sec-sub">Tap a button and feel the love</p>
+    <div class="actions-grid">
+      <div class="action-col"><button class="action-btn" data-anim="kiss">💋</button><span class="action-label">Send Kiss</span></div>
+      <div class="action-col"><button class="action-btn" data-anim="hug">🤗</button><span class="action-label">Send Hug</span></div>
+      <div class="action-col"><button class="action-btn" data-anim="rose">🌹</button><span class="action-label">Send Rose</span></div>
+      <div class="action-col"><button class="action-btn" data-anim="explosion">💖</button><span class="action-label">Heart Explosion</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec-title">Our Future Together</h2>
+    <div class="dreams-grid" id="dreamsDisplay"></div>
+  </section>
+
+  <section class="thankyou">
+    <h2>Thank You for Watching 🎀</h2>
+    <div class="tglow">💗</div>
+    <p style="opacity:.75;font-size:14px;">Made with all our love, for the two of us.</p>
+  </section>
+
+  <footer>
+    <div>Made with lots of love ❤️</div>
+    <div class="creator">code-x</div>
+    <div class="note">Custom websites available — reach out to build your own Blush Story</div>
+  </footer>
+</div>
+
+<script>
+/* ---------------- login ---------------- */
+const VALID_USER = 'code-x';
+const VALID_PASS = 'sanjiv';
+
+function attemptLogin(){
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const errBox = document.getElementById('loginError');
+
+  if(user === VALID_USER && pass === VALID_PASS){
+    errBox.classList.remove('show');
+    sessionStorage.setItem('blush_logged_in', '1');
+    document.getElementById('loginView').style.display = 'none';
+    afterLogin();
+  } else {
+    errBox.classList.add('show');
+    document.getElementById('loginPass').value = '';
+  }
+}
+
+document.getElementById('loginBtn').addEventListener('click', attemptLogin);
+document.getElementById('loginPass').addEventListener('keydown', e=>{ if(e.key==='Enter') attemptLogin(); });
+document.getElementById('loginUser').addEventListener('keydown', e=>{ if(e.key==='Enter') attemptLogin(); });
+
+/* After a successful login: either resume a saved love page (if the URL hash
+   points to one) or show the builder form so a new story can be created. */
+function afterLogin(){
+  const hash = location.hash;
+  const match = hash.match(/love=([a-z0-9]+)/i);
+  if(match){
+    const id = match[1];
+    const raw = localStorage.getItem('blush_'+id);
+    if(raw){
+      try{
+        const data = JSON.parse(raw);
+        renderLovePage(data, id);
+        return;
+      }catch(e){}
+    }
+  }
+  document.getElementById('builderView').style.display = 'block';
+}
+
+/* If already logged in this session, skip straight past the login screen */
+if(sessionStorage.getItem('blush_logged_in') === '1'){
+  document.getElementById('loginView').style.display = 'none';
+  afterLogin();
+}
+
+/* ---------------- background floating hearts ---------------- */
+(function(){
+  const wrap = document.getElementById('heartsBg');
+  const glyphs = ['💗','💕','💖','💓','❤️','💞'];
+  for(let i=0;i<22;i++){
+    const h = document.createElement('span');
+    h.className='bg-heart';
+    h.textContent = glyphs[Math.floor(Math.random()*glyphs.length)];
+    h.style.left = Math.random()*100 + 'vw';
+    h.style.fontSize = (14 + Math.random()*20) + 'px';
+    h.style.animationDuration = (10 + Math.random()*14) + 's';
+    h.style.animationDelay = (Math.random()*12) + 's';
+    wrap.appendChild(h);
+  }
+})();
+
+/* ---------------- dark mode ---------------- */
+function setDark(on){
+  document.documentElement.classList.toggle('dark', on);
+  const btn = document.getElementById('darkToggle');
+  if(btn) btn.textContent = on ? '☀️' : '🌙';
+  localStorage.setItem('blush_dark', on ? '1':'0');
+}
+setDark(localStorage.getItem('blush_dark')==='1');
+document.getElementById('darkToggle').addEventListener('click', ()=> setDark(!document.documentElement.classList.contains('dark')));
+
+/* ---------------- scenario select ---------------- */
+let currentScenario = 'proposal';
+document.querySelectorAll('.scenario-opt').forEach(opt=>{
+  opt.addEventListener('click', ()=>{
+    document.querySelectorAll('.scenario-opt').forEach(o=>o.classList.remove('active'));
+    opt.classList.add('active');
+    currentScenario = opt.dataset.scenario;
+  });
+});
+const scenarioThemes = {
+  proposal: {label:'Love Proposal 💍', title:'Our Blush Story 💕', accent:'#ff6f91', accent2:'#e8c27a', icon:'💍'},
+  birthday: {label:'Birthday Wishes 🎂', title:'Our Birthday Love Story 🎂', accent:'#ff8fab', accent2:'#ffd27a', icon:'🎂'},
+  friends:  {label:'Best Friends 🤝', title:'Our Friendship Story 🤝', accent:'#ff8fc1', accent2:'#c9a6ff', icon:'🤝'}
+};
+
+/* ---------------- image uploads ---------------- */
+let mainPhotoData = null;
+let galleryData = [];
+
+document.getElementById('mainPhotoInput').addEventListener('change', e=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = ev=>{
+    mainPhotoData = ev.target.result;
+    const wrap = document.getElementById('mainPhotoThumb');
+    wrap.innerHTML = `<div class="thumb"><img src="${mainPhotoData}"/><button class="x" onclick="mainPhotoData=null;document.getElementById('mainPhotoThumb').innerHTML=''">×</button></div>`;
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('galleryInput').addEventListener('change', e=>{
+  const files = Array.from(e.target.files).slice(0, 9 - galleryData.length);
+  files.forEach(file=>{
+    const reader = new FileReader();
+    reader.onload = ev=>{
+      galleryData.push(ev.target.result);
+      renderGalleryThumbs();
+    };
+    reader.readAsDataURL(file);
+  });
+});
+function renderGalleryThumbs(){
+  const wrap = document.getElementById('galleryThumbs');
+  wrap.innerHTML = galleryData.map((src,i)=>`<div class="thumb"><img src="${src}"/><button class="x" onclick="removeGalleryImg(${i})">×</button></div>`).join('');
+}
+function removeGalleryImg(i){ galleryData.splice(i,1); renderGalleryThumbs(); }
+
+/* ---------------- dynamic reasons ---------------- */
+const reasonIcons = ['❤️','🌸','⭐','🌹','✨','😊','🥰','🍀','🎀','💫'];
+function addReasonRow(value=''){
+  const wrap = document.getElementById('reasonsWrap');
+  if(wrap.children.length >= 10) return;
+  const row = document.createElement('div');
+  row.className='dyn-row';
+  const iconOptions = reasonIcons.map(ic=>`<option value="${ic}">${ic}</option>`).join('');
+  row.innerHTML = `<select>${iconOptions}</select><input type="text" placeholder="Because you..." value="${value}"/><button class="rm-btn" onclick="this.parentElement.remove()">×</button>`;
+  wrap.appendChild(row);
+}
+document.getElementById('addReason').addEventListener('click', ()=>addReasonRow());
+addReasonRow(); addReasonRow(); addReasonRow();
+
+/* ---------------- dynamic dreams ---------------- */
+const dreamIcons = ['✈️','💍','🐾','🏡','👶','🌅','🎓','💰','🚗','🌍'];
+function addDreamRow(value=''){
+  const wrap = document.getElementById('dreamsWrap');
+  if(wrap.children.length >= 8) return;
+  const row = document.createElement('div');
+  row.className='dyn-row';
+  const iconOptions = dreamIcons.map(ic=>`<option value="${ic}">${ic}</option>`).join('');
+  row.innerHTML = `<select>${iconOptions}</select><input type="text" placeholder="Travel the world together" value="${value}"/><button class="rm-btn" onclick="this.parentElement.remove()">×</button>`;
+  wrap.appendChild(row);
+}
+document.getElementById('addDream').addEventListener('click', ()=>addDreamRow());
+addDreamRow('Travel the world together');
+addDreamRow('Grow old together');
+addDreamRow('Adopt a puppy');
+
+/* ---------------- generate ---------------- */
+function genId(){ return 'x' + Math.random().toString(36).slice(2,10) + Date.now().toString(36); }
+
+document.getElementById('generateBtn').addEventListener('click', ()=>{
+  const boy = document.getElementById('boyName').value.trim();
+  const girl = document.getElementById('girlName').value.trim();
+  const date = document.getElementById('loveDate').value;
+  if(!boy || !girl || !date){
+    alert('Please fill in both names and the special date 💕');
+    return;
+  }
+  const reasons = Array.from(document.getElementById('reasonsWrap').children).map(row=>{
+    const sel = row.querySelector('select').value;
+    const txt = row.querySelector('input').value.trim();
+    return txt ? {icon:sel,text:txt} : null;
+  }).filter(Boolean);
+  const dreams = Array.from(document.getElementById('dreamsWrap').children).map(row=>{
+    const sel = row.querySelector('select').value;
+    const txt = row.querySelector('input').value.trim();
+    return txt ? {icon:sel,text:txt} : null;
+  }).filter(Boolean);
+
+  const data = {
+    scenario: currentScenario,
+    boy, girl, date,
+    mainPhoto: mainPhotoData,
+    gallery: galleryData,
+    reasons, dreams,
+    messages: []
+  };
+
+  const id = genId();
+  try{
+    localStorage.setItem('blush_'+id, JSON.stringify(data));
+  }catch(err){
+    alert('Your photos are too large to save. Try fewer/smaller images.');
+    return;
+  }
+  location.hash = 'love=' + id;
+  const link = document.getElementById('privateLink');
+  link.value = location.href;
+  document.getElementById('linkBox').classList.add('show');
+
+  renderLovePage(data, id);
+});
+
+document.getElementById('copyLinkBtn').addEventListener('click', ()=>{
+  const link = document.getElementById('privateLink');
+  link.select();
+  document.execCommand('copy');
+  const btn = document.getElementById('copyLinkBtn');
+  const old = btn.textContent; btn.textContent='Copied!';
+  setTimeout(()=>btn.textContent=old,1500);
+});
+
+document.getElementById('editBtn').addEventListener('click', ()=>{
+  document.getElementById('loveView').style.display='none';
+  document.getElementById('builderView').style.display='block';
+  history.pushState('', document.title, location.pathname + location.search);
+});
+
+document.getElementById('logoutBtn').addEventListener('click', ()=>{
+  sessionStorage.removeItem('blush_logged_in');
+  document.getElementById('loveView').style.display='none';
+  document.getElementById('builderView').style.display='none';
+  document.getElementById('loginUser').value='';
+  document.getElementById('loginPass').value='';
+  document.getElementById('loginView').style.display='flex';
+  history.pushState('', document.title, location.pathname + location.search);
+});
+
+/* ---------------- render love page ---------------- */
+let activeData = null;
+let activeId = null;
+
+function renderLovePage(data, id){
+  activeData = data; activeId = id;
+  document.getElementById('builderView').style.display='none';
+  const view = document.getElementById('loveView');
+  view.style.display='block';
+  window.scrollTo(0,0);
+
+  const theme = scenarioThemes[data.scenario] || scenarioThemes.proposal;
+  document.documentElement.style.setProperty('--deep-pink', theme.accent);
+  document.documentElement.style.setProperty('--gold', theme.accent2);
+  document.getElementById('scenarioBadge').textContent = theme.label;
+  view.querySelector('.hero h1').textContent = theme.title;
+  document.getElementById('heroSubtitle').textContent = `${data.boy} & ${data.girl}'s Love World`;
+
+  const mainDisplay = document.getElementById('mainPhotoDisplay');
+  mainDisplay.innerHTML = data.mainPhoto ? `<img src="${data.mainPhoto}"/>` : theme.icon;
+
+  // gallery
+  const gWrap = document.getElementById('galleryDisplay');
+  if(data.gallery && data.gallery.length){
+    gWrap.innerHTML = data.gallery.map((src,i)=>`
+      <div class="polaroid" style="--r:${(i%2===0?-1:1)*(3+ (i%3))}deg">
+        <div class="ph"><img src="${src}"/></div>
+        <span class="heart-corner left">💖</span>
+        <span class="heart-corner right">💖</span>
+      </div>`).join('');
+  } else {
+    gWrap.innerHTML = `<p style="grid-column:1/-1;text-align:center;opacity:.6">No photos uploaded yet 📸</p>`;
+  }
+
+  // reasons
+  const rWrap = document.getElementById('reasonsDisplay');
+  rWrap.innerHTML = (data.reasons && data.reasons.length) ? data.reasons.map(r=>`
+    <div class="reason-card"><span class="ic">${r.icon}</span><p>${escapeHtml(r.text)}</p></div>
+  `).join('') : `<p style="grid-column:1/-1;text-align:center;opacity:.6">No reasons added yet</p>`;
+
+  // dreams
+  const dWrap = document.getElementById('dreamsDisplay');
+  dWrap.innerHTML = (data.dreams && data.dreams.length) ? data.dreams.map(d=>`
+    <div class="dream-card"><span class="ic">${d.icon}</span><p>${escapeHtml(d.text)}</p></div>
+  `).join('') : `<p style="grid-column:1/-1;text-align:center;opacity:.6">No dreams added yet</p>`;
+
+  // messages
+  renderMessages();
+
+  // counter
+  startCounter(data.date);
+}
+
+function escapeHtml(str){
+  const d = document.createElement('div'); d.textContent = str; return d.innerHTML;
+}
+
+function renderMessages(){
+  const list = document.getElementById('messagesList');
+  list.innerHTML = (activeData.messages||[]).map(m=>`
+    <div class="msg-bubble">${escapeHtml(m.text)}<span class="msg-time">${m.time}</span></div>
+  `).join('');
+}
+
+document.getElementById('sendMsgBtn').addEventListener('click', ()=>{
+  const input = document.getElementById('msgInput');
+  const text = input.value.trim();
+  if(!text) return;
+  activeData.messages.push({text, time: new Date().toLocaleString()});
+  if(activeId) localStorage.setItem('blush_'+activeId, JSON.stringify(activeData));
+  input.value='';
+  renderMessages();
+});
+
+/* ---------------- love days counter ---------------- */
+let counterTimer = null;
+function startCounter(dateStr){
+  const box = document.getElementById('counterBox');
+  const start = new Date(dateStr + 'T00:00:00');
+  if(counterTimer) clearInterval(counterTimer);
+  function update(){
+    const now = new Date();
+    let diff = now - start;
+    if(diff < 0) diff = 0;
+    const days = Math.floor(diff/86400000);
+    const hours = Math.floor((diff%86400000)/3600000);
+    const mins = Math.floor((diff%3600000)/60000);
+    const secs = Math.floor((diff%60000)/1000);
+    box.innerHTML = `
+      <div class="counter-item"><div class="num">${days}</div><div class="lbl">Days</div></div>
+      <div class="counter-item"><div class="num">${hours}</div><div class="lbl">Hours</div></div>
+      <div class="counter-item"><div class="num">${mins}</div><div class="lbl">Mins</div></div>
+      <div class="counter-item"><div class="num">${secs}</div><div class="lbl">Secs</div></div>
+    `;
+  }
+  update();
+  counterTimer = setInterval(update, 1000);
+}
+
+/* ---------------- kiss / heart burst ---------------- */
+function burstHearts(x, y, glyph, count){
+  for(let i=0;i<count;i++){
+    const h = document.createElement('div');
+    h.className='burst-heart';
+    h.textContent = glyph;
+    h.style.left = x + 'px';
+    h.style.top = y + 'px';
+    h.style.setProperty('--dx', (Math.random()*160-80)+'px');
+    h.style.animationDelay = (Math.random()*0.2)+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(), 1600);
+  }
+}
+
+document.getElementById('sendKissHero').addEventListener('click', (e)=>{
+  const r = e.target.getBoundingClientRect();
+  burstHearts(r.left+r.width/2, r.top, '💋', 14);
+});
+
+document.querySelectorAll('.action-btn').forEach(btn=>{
+  btn.addEventListener('click', (e)=>{
+    const r = e.target.getBoundingClientRect();
+    const type = btn.dataset.anim;
+    const map = {kiss:'💋', hug:'🤗', rose:'🌹', explosion:'💖'};
+    const count = type==='explosion' ? 24 : 10;
+    burstHearts(r.left+r.width/2, r.top, map[type], count);
+  });
+});
+
+/* Note: loading a saved page from the URL hash now happens inside
+   afterLogin(), once the username/password have been verified, so a
+   private link still requires logging in first. */
+</script>
+</body>
+</html>
